@@ -141,17 +141,20 @@ class ChromeLauncher {
       // allowing for the remote debug port to be enabled.
       '--user-data-dir=${userDataDir.path}',
       '--remote-debugging-port=$port',
-      // When the DevTools has focus we don't want to slow down the application.
-      '--disable-background-timer-throttling',
-      // Since we are using a temp profile, disable features that slow the
-      // Chrome launch.
-      '--disable-extensions',
-      '--disable-popup-blocking',
-      '--bwsi',
-      '--no-first-run',
-      '--no-default-browser-check',
-      '--disable-default-apps',
-      '--disable-translate',
+      if (!customUserDataDir)
+        ...<String>[
+          // When the DevTools has focus we don't want to slow down the application.
+          '--disable-background-timer-throttling',
+          // Since we are using a temp profile, disable features that slow the
+          // Chrome launch.
+          '--disable-extensions',
+          '--disable-popup-blocking',
+          '--bwsi',
+          '--no-first-run',
+          '--no-default-browser-check',
+          '--disable-default-apps',
+          '--disable-translate'
+        ],
       if (headless)
         ...<String>['--headless', '--disable-gpu', '--no-sandbox', '--window-size=2400,1800'],
       url,

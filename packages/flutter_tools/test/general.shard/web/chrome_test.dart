@@ -198,7 +198,6 @@ void main() {
       'example_chrome',
       '--user-data-dir=/.tmp_rand1/flutter_tools_chrome_device.rand1',
       '--remote-debugging-port=1234',
-      ..._kChromeArgs,
       'example_url',
     ], completer: exitCompleter));
 
